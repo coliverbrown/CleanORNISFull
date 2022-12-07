@@ -1,7 +1,8 @@
 ## splitting skinmeas column into usable data function
 
 skin.meas.split <- function(x) {
-  # need to make sure the variable names are consistent throughout the data frame
+  
+  if (length(x) >= 1) {  # need to make sure the variable names are consistent throughout the data frame
   x <- gsub("WCH:", "WCH:", ignore.case = TRUE, as.character(x))
   x <- gsub("TL:", "TL:", ignore.case = TRUE, as.character(x))
   x <- gsub("TS:", "TS:", ignore.case = TRUE, as.character(x))
@@ -26,8 +27,20 @@ skin.meas.split <- function(x) {
   BLH <- as.numeric(gsub("BLH:", "", grep("BLH:", unlist(strsplit(x, ";")), value = T)))
   BLW <- as.numeric(gsub("BLW:", "", grep("BLW:", unlist(strsplit(x, ";")), value = T)))
   SKL <- as.numeric(gsub("SKL:", "", grep("SKL:", unlist(strsplit(x, ";")), value = T)))
-  return(c(WCH, TL, TS, BL, BLH, BLW, SKL))
+  if(length(WCH)==0){WCH <- NA}
+  if(length(TL)==0){TL <- NA}
+  if(length(TS)==0){TS <- NA}
+  if(length(BL)==0){BL <- NA}
+  if(length(BLH)==0){BLH <- NA}
+  if(length(BLW)==0){BLW <- NA}
+  if(length(SKL)==0){SKL <- NA}
   
+   output <- c(WCH, TL, TS, BL, BLH, BLW, SKL)
+  }  
+  else { output <- c(rep(NA,7)) }
+
+   return(output)
   
+
   
 }
