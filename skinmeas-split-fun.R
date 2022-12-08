@@ -1,4 +1,7 @@
-## splitting skinmeas column into usable data function
+######### Function to separate "SKINMEAS" column from ORNIS full flat file
+######### Author: Caitlyn Oliver Brown
+######### Last Update: 7 Dec 2022
+
 
 skin.meas.split <- function(x) {
   
