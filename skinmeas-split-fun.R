@@ -44,6 +44,4 @@ skin.meas.split <- function(x) {
 
    return(output)
   
-
-  
 }
